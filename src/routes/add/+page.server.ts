@@ -36,15 +36,15 @@ export const actions: Actions = {
       keyword: yup.string().required("Keyword is required"),
       status: yup.string().required("Status is required"),
       service: yup.string().required("Service is required"),
-      charge_price: yup.number().typeError('Charge price need to be in decimal').required("Charge Price is required").round()
+      charge_price: yup.number().typeError('Charge price need to be in decimal').required("Charge Price is required").positive().min(0.00)
     });
 
     const isValid = await schema.isValid(validateValue);
     let errors = {};
-    let test = []
+    let validationMessage = []
 
     const addErrorMessage = (message) => {
-      test.push(message)
+      validationMessage.push(message)
     }
 
     const validateData = async () => await schema
@@ -70,7 +70,7 @@ export const actions: Actions = {
       
       return invalid(400, {
         error: true,
-        message: test,
+        message: validationMessage,
         msisdn,
         keyword,
         status,

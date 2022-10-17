@@ -5,7 +5,6 @@
   import { get } from "svelte/store";
   import { error } from "@sveltejs/kit";
   export let form: any;
-  export let data: any;
 </script>
 
 <a href="/">Back</a>
@@ -36,41 +35,54 @@
           type="text"
           name="msisdn"
           value={form?.msisdn ?? ""}
-          class="input input-primary input-bordered w-full max-w-xs"
         />
     </div>
     <div class="form-items">
         <label for="shortcode">
           <span>Shortcode</span>
         </label>
-        <input
+        <select name="shortcode" id="shortcode" >
+          <option value="1111">1111</option>
+          <option value="2222">2222</option>
+          <option value="3333">3333</option>
+          <option value="4444">4444</option>
+          <option value="5555">5555</option>
+        </select>
+        <!-- <input
           type="text"
           name="shortcode"
           value={form?.shortcode ?? ""}
-          class="input input-primary input-bordered w-full max-w-xs"
-        />
+        /> -->
     </div>
     <div class="form-items">
         <label for="keyword">
           <span>Keyword</span>
         </label>
-        <input
+        <select name="keyword" id="keyword" >
+          <option value="AA">AA</option>
+          <option value="BB">BB</option>
+          <option value="CC">CC</option>
+          <option value="DD">DD</option>
+        </select>
+        <!-- <input
           type="text"
           name="keyword"
           value={form?.keyword ?? ""}
-          class="input input-primary input-bordered w-full max-w-xs"
-        />
+        /> -->
     </div>
     <div class="form-items">
         <label for="status">
           <span>Status</span>
         </label>
-        <input
+        <select name="status" id="status" >
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+        <!-- <input
           type="text"
           name="status"
           value={form?.status ?? ""}
-          class="input input-primary input-bordered w-full max-w-xs"
-        />
+        /> -->
     </div>
     <div class="form-items">
         <label for="charge_price">
@@ -80,7 +92,6 @@
           type="text"
           name="charge_price"
           value={form?.charge_price ?? ""}
-          class="input input-primary input-bordered w-full max-w-xs"
         />
     </div>
     <div class="form-items">
@@ -91,7 +102,6 @@
           type="text"
           name="service"
           value={form?.service ?? ""}
-          class="input input-primary input-bordered w-full max-w-xs"
         />
     </div>
     {#if form?.error}
