@@ -8,6 +8,6 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<h1>Hehe</h1>
+<h1>Subscription</h1>
 
 <Table userSubscription={data.subscription}/>

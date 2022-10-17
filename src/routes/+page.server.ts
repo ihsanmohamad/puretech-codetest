@@ -1,6 +1,7 @@
 import { supabase } from "$lib/supabaseClient";
 import { error } from "@sveltejs/kit";
-import type { Actions, PageServerLoad } from "./$types";
+import { tablesData } from '$lib/stores/tableData'
+import type {  PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
   let { data: subscription, error: errorMessage } = await supabase
@@ -8,9 +9,9 @@ export const load: PageServerLoad = async () => {
     .select("*");
     
   if (!subscription) {
-    throw error(400, `${errorMessage}`);
+    throw error(400, `${errorMessage?.message}`);
   }
-
+   tablesData.update(subscription)
   return { subscription };
 };
 

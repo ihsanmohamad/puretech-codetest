@@ -1,7 +1,8 @@
 <script>
-    export let id
+    export let row; /*: BodyRow<Item>*/
+    export let column; /*: DataColumn<Item>*/
+    export let value; /*: unknown;*/
 </script>
-{#if id === undefined}
-  <span>No email</span>
-  {/if}
-    <p>test je {id}</p>
+<a href={`/edit/${value}`}>
+    <p>Edit</p>
+</a>
